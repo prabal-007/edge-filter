@@ -3,12 +3,9 @@ import time
 
 video = cv.VideoCapture(0, cv.CAP_DSHOW)
 
-a=1
-
 while True:
-    a += 1
     check, frame = video.read()
-    print(frame)
+#     print(frame)
 
     edges = cv.Canny(frame, 200, 150)
     cv.imshow('vid', edges)
