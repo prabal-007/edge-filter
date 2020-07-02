@@ -13,16 +13,35 @@ def sobel(img):
     cv.imshow('sobel', sobelx8)
     cv.waitKey(0)
 
+def comp(img):
+    edges = cv.Canny(img, 200, 40)
+    cv.imshow('mes1', img)
+    cv.waitKey(0)
+    cv.imshow('mes', edges)
+    cv.waitKey(0)
+    sobelx = cv.Sobel(img, cv.CV_64F, 1, 0, ksize=31)
+    sobelx8 = np.uint8(sobelx)
+    cv.imshow('sobel', sobelx8)
+    cv.waitKey(0)
+    cv.destroyAllWindows()
+
 if __name__ == '__main__':
-    img = cv.imread('***************\\messi.jpg', 0)                 # ** = path of the picture
-    img = cv.resize(img, (800, 600))
+    img = cv.imread('C:\\Users\\admin\\Downloads\\messi.jpg', 0)
+    img = cv.resize(img, (600, 600))
     while True:
-        option = input("press 1 for Canny or 2 for Sobel image : ")
+        option = input("press 1 for Canny or 2 for Sobel 3 for original image and 4 for all : ")
         if option == "1":
             canny(img)
-            break
+            continue
         elif option == "2":
             sobel(img)
+            break
+        elif option == "3":
+            cv.imshow('img2', img)
+            cv.waitKey(0)
+            break
+        elif option == "4":
+            comp(img)
             break
         else:
             print("Invalid option")
