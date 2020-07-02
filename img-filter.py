@@ -5,6 +5,7 @@ def canny(image):
     edges = cv.Canny(image, 200, 40)
     cv.imshow('mes1', edges)
     cv.waitKey(0)
+    cv.destroyAllWindows()
 
 def sobel(img):
     sobelx = cv.Sobel(img, cv.CV_64F, 1, 0, ksize=31)
@@ -12,6 +13,7 @@ def sobel(img):
     sobelx8 = np.uint8(sobelx)
     cv.imshow('sobel', sobelx8)
     cv.waitKey(0)
+    cv.destroyAllWindows()
 
 def comp(img):
     edges = cv.Canny(img, 200, 40)
@@ -35,13 +37,16 @@ if __name__ == '__main__':
             continue
         elif option == "2":
             sobel(img)
-            break
+            continue
         elif option == "3":
             cv.imshow('img2', img)
             cv.waitKey(0)
-            break
+            cv.destroyAllWindows()
+            continue
         elif option == "4":
             comp(img)
+            continue
+        elif option == "0":
             break
         else:
             print("Invalid option")
